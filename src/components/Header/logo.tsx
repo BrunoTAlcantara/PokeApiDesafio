@@ -1,5 +1,19 @@
+import { useBreakpointValue } from '@chakra-ui/react';
 import Image from 'next/image';
 
 export function Logo(): JSX.Element {
-  return <Image src="/pokemonLogo.png" alt="Logo" width={190} height={70} />;
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
+  return (
+    <>
+      {!isWideVersion ? (
+        <Image src="/pokemonLogo.png" alt="Logo" width={140} height={50} />
+      ) : (
+        <Image src="/pokemonLogo.png" alt="Logo" width={190} height={70} />
+      )}
+    </>
+  );
 }
