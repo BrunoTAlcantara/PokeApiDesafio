@@ -10,10 +10,10 @@ import {
   Box,
   Heading,
   Text,
+  useColorModeValue,
   Button,
 } from '@chakra-ui/react';
 import { pokemonContext } from '../context/pokemonContext';
-import { all } from 'axios';
 
 export default function Home() {
   const { countPokemons } = useContext(pokemonContext);
@@ -29,17 +29,22 @@ export default function Home() {
         >
           <Stack flex={1} spacing={{ base: 5, md: 5 }}>
             <Heading
+              color={useColorModeValue('blue.500', 'white')}
               lineHeight={1}
               fontWeight={800}
               fontSize={{ base: '3xl', sm: '4xl', lg: '7xl' }}
             >
               <Text>Encontre Seus Pokémons Favoritos.</Text>
             </Heading>
-            <Text fontWeight="bold" color="blue.400" fontSize="4xl">
+            <Text
+              fontWeight="bold"
+              color="blue.400"
+              fontSize={{ base: 'xl', sm: '2xl', lg: '4xl' }}
+            >
               {' '}
               Já são {countPokemons} cadastrados!
             </Text>
-            <Text color={'gray.200'}>
+            <Text color={useColorModeValue('gray.700', 'gray.200')}>
               PokeTracker é um site que permite que você encontre seus Pokémons
               favoritos e cadastre seus próprios.
             </Text>
@@ -58,7 +63,10 @@ export default function Home() {
                 _hover={{ bg: 'blue.400' }}
                 onClick={() => router.push('/pokemons')}
               >
-                Encontre agora!
+                <Text fontSize={{ base: 'small', sm: 'sm', lg: 'large' }}>
+                  {' '}
+                  Encontre o seu
+                </Text>
               </Button>
               <Button
                 rounded={'full'}
@@ -68,7 +76,10 @@ export default function Home() {
                 py={6}
                 onClick={() => router.push('/pokemons/create')}
               >
-                Cadastre o seu
+                <Text fontSize={{ base: 'small', sm: 'sm', lg: 'large' }}>
+                  {' '}
+                  Cadastre agora
+                </Text>
               </Button>
             </Stack>
           </Stack>

@@ -10,9 +10,9 @@ export function Logo(): JSX.Element {
   return (
     <>
       {!isWideVersion ? (
-        <Image src="/pokemonLogo.png" alt="Logo" width={140} height={50} />
+        <Image src="/pokemonLogo.png" alt="Logo" width={140} height={40} />
       ) : (
-        <Image src="/pokemonLogo.png" alt="Logo" width={190} height={70} />
+        <Image src="/pokemonLogo.png" alt="Logo" width={190} height={55} />
       )}
     </>
   );

@@ -1,9 +1,10 @@
-import { Flex, useBreakpointValue, Text } from '@chakra-ui/react';
+import { Flex, useBreakpointValue, Text, Spacer } from '@chakra-ui/react';
 
 import { Logo } from './logo';
 
 import { SideBarNav } from './navBar';
 import { NavMobile } from './navM';
+import { ButtonColorMode } from '../buttonColorMode';
 
 export default function Header(): JSX.Element {
   const isWideVersion = useBreakpointValue({
@@ -22,7 +23,7 @@ export default function Header(): JSX.Element {
       px={{ base: '5px', md: '80px' }}
       align="center"
       boxShadow="md"
-      justify={{ base: 'center', md: 'flex-start' }} // adiciona alinhamento horizontal no modo mobile
+      justifyContent="space-between" // altera a propriedade justifyContent
     >
       {!isWideVersion && (
         <NavMobile>
@@ -32,9 +33,15 @@ export default function Header(): JSX.Element {
 
       <Logo />
 
-      <Flex align="center" ml="auto">
-        {isWideVersion && <SideBarNav />}
-      </Flex>
+      {!isWideVersion && <ButtonColorMode />}
+
+      {isWideVersion && (
+        <Flex align="center">
+          <SideBarNav />
+          <Spacer mr="40px" />
+          <ButtonColorMode />
+        </Flex>
+      )}
     </Flex>
   );
 }

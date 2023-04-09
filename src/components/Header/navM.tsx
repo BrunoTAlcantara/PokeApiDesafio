@@ -8,6 +8,7 @@ import {
   IconButton,
   DrawerCloseButton,
   DrawerHeader,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Menu } from 'lucide-react';
 import { ReactNode } from 'react';
@@ -26,12 +27,13 @@ export function NavMobile({ children }: NavMobileProps) {
         icon={<Icon as={Menu} />}
         fontSize="24"
         onClick={onOpen}
+        color={useColorModeValue('blue.500', 'white')}
         variant="unstyled"
         mr="2"
       />
       <Drawer size="xs" placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay>
-          <DrawerContent bg="white" w="20">
+          <DrawerContent w="20">
             <DrawerCloseButton mt="6" />
             <DrawerHeader>Navegação</DrawerHeader>
             <DrawerBody>{children}</DrawerBody>
