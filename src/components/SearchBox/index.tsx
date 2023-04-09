@@ -16,8 +16,8 @@ export function SearchBox(): JSX.Element {
       alignSelf="center"
       color="gray.200"
       position="relative"
-      bg="gray.800"
       borderRadius="full"
+      border="2px solid"
     >
       <Input
         color="gray.50"

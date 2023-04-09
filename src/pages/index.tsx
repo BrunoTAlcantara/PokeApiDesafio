@@ -10,10 +10,10 @@ import {
   Box,
   Heading,
   Text,
+  useColorModeValue,
   Button,
 } from '@chakra-ui/react';
 import { pokemonContext } from '../context/pokemonContext';
-import { all } from 'axios';
 
 export default function Home() {
   const { countPokemons } = useContext(pokemonContext);
@@ -29,6 +29,7 @@ export default function Home() {
         >
           <Stack flex={1} spacing={{ base: 5, md: 5 }}>
             <Heading
+              color={useColorModeValue('blue.500', 'white')}
               lineHeight={1}
               fontWeight={800}
               fontSize={{ base: '3xl', sm: '4xl', lg: '7xl' }}
@@ -43,7 +44,7 @@ export default function Home() {
               {' '}
               Já são {countPokemons} cadastrados!
             </Text>
-            <Text color={'gray.200'}>
+            <Text color={useColorModeValue('gray.700', 'gray.200')}>
               PokeTracker é um site que permite que você encontre seus Pokémons
               favoritos e cadastre seus próprios.
             </Text>

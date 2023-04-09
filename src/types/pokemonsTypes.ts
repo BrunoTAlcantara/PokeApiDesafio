@@ -63,7 +63,7 @@ export const pokemonTypes = {
     name: 'Flying',
     summary:
       'Pokémon de tipo Voador são fortes contra tipos Grama, Lutador e Inseto, mas fracos contra tipos Elétrico, Gelo e Rocha.',
-    color: 'lightblue',
+    color: 'teal',
   },
   psychic: {
     name: 'Psychic',

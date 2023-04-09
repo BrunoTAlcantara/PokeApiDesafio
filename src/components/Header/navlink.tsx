@@ -22,14 +22,7 @@ export default function NavLink({
       align="center"
       {...rest}
     >
-      <Text
-        ml="4"
-        _hover={{
-          color: 'yellow.400',
-        }}
-        fontSize="xl"
-        fontWeight="extrabold"
-      >
+      <Text ml="4" fontSize="xl" fontWeight="extrabold">
         {children}
       </Text>
     </ChakraLink>

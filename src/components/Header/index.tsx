@@ -1,9 +1,10 @@
-import { Flex, useBreakpointValue, Text } from '@chakra-ui/react';
+import { Flex, useBreakpointValue, Text, Spacer } from '@chakra-ui/react';
 
 import { Logo } from './logo';
 
 import { SideBarNav } from './navBar';
 import { NavMobile } from './navM';
+import { ButtonColorMode } from '../buttonColorMode';
 
 export default function Header(): JSX.Element {
   const isWideVersion = useBreakpointValue({
@@ -32,9 +33,15 @@ export default function Header(): JSX.Element {
 
       <Logo />
 
-      {!isWideVersion && <Text> ola</Text>}
+      {!isWideVersion && <ButtonColorMode />}
 
-      {isWideVersion && <SideBarNav />}
+      {isWideVersion && (
+        <Flex align="center">
+          <SideBarNav />
+          <Spacer mr="40px" />
+          <ButtonColorMode />
+        </Flex>
+      )}
     </Flex>
   );
 }

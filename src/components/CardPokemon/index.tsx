@@ -35,6 +35,7 @@ export default function CardPokemon({
   return (
     <Stack key={id} spacing={6}>
       <Card
+        color="white"
         overflow="hidden"
         variant="elevated"
         bg={`${backgroundColors[0].color}.500`}
@@ -42,7 +43,6 @@ export default function CardPokemon({
         <CardHeader>
           <Flex flexDirection="row" justify="space-between">
             <Text fontWeight="bold" fontSize="2xl">
-              {' '}
               {name}
             </Text>
             <Text fontWeight="thin" fontSize="2xl">
@@ -56,6 +56,7 @@ export default function CardPokemon({
               <Flex flexDir="column">
                 {types.map((type, index) => (
                   <Card
+                    color="white"
                     mb="10px"
                     key={type.slot}
                     variant="elevated"

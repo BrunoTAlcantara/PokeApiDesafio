@@ -8,6 +8,7 @@ import {
   IconButton,
   DrawerCloseButton,
   DrawerHeader,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Menu } from 'lucide-react';
 import { ReactNode } from 'react';
@@ -26,6 +27,7 @@ export function NavMobile({ children }: NavMobileProps) {
         icon={<Icon as={Menu} />}
         fontSize="24"
         onClick={onOpen}
+        color={useColorModeValue('blue.500', 'white')}
         variant="unstyled"
         mr="2"
       />
