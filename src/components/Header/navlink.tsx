@@ -9,8 +9,8 @@ interface INavLinkProps extends LinkProps {
 
 export default function NavLink({
   href,
-
   children,
+
   ...rest
 }: INavLinkProps): JSX.Element {
   return (
@@ -29,7 +29,7 @@ export default function NavLink({
             color: 'yellow.400',
           }}
           fontSize="xl"
-          fontWeight="medium"
+          fontWeight="extrabold"
         >
           {children}
         </Text>
