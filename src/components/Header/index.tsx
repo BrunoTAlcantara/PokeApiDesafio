@@ -22,7 +22,7 @@ export default function Header(): JSX.Element {
       px={{ base: '5px', md: '80px' }}
       align="center"
       boxShadow="md"
-      justify={{ base: 'center', md: 'flex-start' }} // adiciona alinhamento horizontal no modo mobile
+      justifyContent="space-between" // altera a propriedade justifyContent
     >
       {!isWideVersion && (
         <NavMobile>
@@ -32,9 +32,9 @@ export default function Header(): JSX.Element {
 
       <Logo />
 
-      <Flex align="center" ml="auto">
-        {isWideVersion && <SideBarNav />}
-      </Flex>
+      {!isWideVersion && <Text> ola</Text>}
+
+      {isWideVersion && <SideBarNav />}
     </Flex>
   );
 }

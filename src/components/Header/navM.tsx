@@ -31,7 +31,7 @@ export function NavMobile({ children }: NavMobileProps) {
       />
       <Drawer size="xs" placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay>
-          <DrawerContent bg="white" w="20">
+          <DrawerContent w="20">
             <DrawerCloseButton mt="6" />
             <DrawerHeader>Navegação</DrawerHeader>
             <DrawerBody>{children}</DrawerBody>

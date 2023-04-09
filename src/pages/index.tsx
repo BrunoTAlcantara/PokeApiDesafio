@@ -31,7 +31,11 @@ export default function Home() {
             >
               <Text>Encontre Seus Pokémons Favoritos.</Text>
             </Heading>
-            <Text fontWeight="bold" color="blue.400" fontSize="4xl">
+            <Text
+              fontWeight="bold"
+              color="blue.400"
+              fontSize={{ base: 'xl', sm: '2xl', lg: '4xl' }}
+            >
               {' '}
               Já são 1800 cadastrados!
             </Text>
@@ -54,7 +58,10 @@ export default function Home() {
                 _hover={{ bg: 'blue.400' }}
                 onClick={() => router.push('/pokemons')}
               >
-                Encontre agora!
+                <Text fontSize={{ base: 'small', sm: 'sm', lg: 'large' }}>
+                  {' '}
+                  Encontre o seu
+                </Text>
               </Button>
               <Button
                 rounded={'full'}
@@ -64,7 +71,10 @@ export default function Home() {
                 py={6}
                 onClick={() => router.push('/pokemons/create')}
               >
-                Cadastre o seu
+                <Text fontSize={{ base: 'small', sm: 'sm', lg: 'large' }}>
+                  {' '}
+                  Cadastre agora
+                </Text>
               </Button>
             </Stack>
           </Stack>

@@ -1,4 +1,4 @@
-import { Link, Text, LinkProps } from '@chakra-ui/react';
+import { Link as ChakraLink, Text, LinkProps } from '@chakra-ui/react';
 
 import { ActiveLink } from '../ActiveLink';
 
@@ -14,26 +14,24 @@ export default function NavLink({
   ...rest
 }: INavLinkProps): JSX.Element {
   return (
-    <ActiveLink href={href} passHref>
-      <Link
-        textDecor="none"
-        style={{ textDecoration: 'none !important' }}
-        display="flex"
-        align="center"
-        {...rest}
+    <ChakraLink
+      textDecor="none"
+      href={href}
+      style={{ textDecoration: 'none !important' }}
+      display="flex"
+      align="center"
+      {...rest}
+    >
+      <Text
+        ml="4"
+        _hover={{
+          color: 'yellow.400',
+        }}
+        fontSize="xl"
+        fontWeight="extrabold"
       >
-        <Text
-          ml="4"
-          color="blue.600"
-          _hover={{
-            color: 'yellow.400',
-          }}
-          fontSize="xl"
-          fontWeight="extrabold"
-        >
-          {children}
-        </Text>
-      </Link>
-    </ActiveLink>
+        {children}
+      </Text>
+    </ChakraLink>
   );
 }
