@@ -2,6 +2,7 @@ import Layout from '../layout';
 import Lottie from 'lottie-react';
 import AnimatePokemon from '../../public/animatePokemon.json';
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import {
   Container,
   Stack,
@@ -11,8 +12,11 @@ import {
   Text,
   Button,
 } from '@chakra-ui/react';
+import { pokemonContext } from '../context/pokemonContext';
+import { all } from 'axios';
 
 export default function Home() {
+  const { countPokemons } = useContext(pokemonContext);
   const router = useRouter();
   return (
     <Layout>
@@ -37,7 +41,7 @@ export default function Home() {
               fontSize={{ base: 'xl', sm: '2xl', lg: '4xl' }}
             >
               {' '}
-              Já são 1800 cadastrados!
+              Já são {countPokemons} cadastrados!
             </Text>
             <Text color={'gray.200'}>
               PokeTracker é um site que permite que você encontre seus Pokémons
