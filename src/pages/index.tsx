@@ -1,6 +1,6 @@
 import Layout from '../layout';
 import Lottie from 'lottie-react';
-import AnimatePokemon from '../../public/Animatepokemon.json';
+import AnimatePokemon from '../../public/animatePokemon.json';
 import { useRouter } from 'next/router';
 import {
   Container,
