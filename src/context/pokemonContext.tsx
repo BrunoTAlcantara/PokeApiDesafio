@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import { Pokemons } from '../types/Pokemons';
 
 type PokemonContextType = {
   pokemons: Pokemons[];

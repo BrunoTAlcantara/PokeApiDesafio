@@ -1,4 +1,4 @@
-interface Pokemons {
+export interface Pokemons {
   abilities: {
     ability: { name: string; url: string };
     is_hidden: boolean;

@@ -2,7 +2,7 @@ import { useState, useEffect, ReactNode } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { useToast } from '@chakra-ui/react';
 import { pokemonContext } from './pokemonContext';
-import { pokemonTypes } from '../types/pokemonsTypes';
+import { Pokemons } from '../types/Pokemons';
 
 export const apiPokemon = axios.create({
   baseURL: 'https://pokeapi.co/api/v2/',
