@@ -8,28 +8,44 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 import Image from 'next/image';
+import { pokemonTypes } from '../../types/pokemonsTypes';
 
 interface ICardInfoProps {
-  id: string;
+  id: number;
   name: string;
   imageSrc: string;
   color: string;
+  types: { slot: number; type: { name: string; url: string } }[];
 }
 
 export default function CardPokemon({
   id,
   name,
   imageSrc,
-
-  color,
+  types,
 }: ICardInfoProps) {
+  const backgroundColors = types.map(({ type }) => {
+    const [[, backgroundColor]] = Object.entries(pokemonTypes).filter(
+      ([key, _]) => key === type.name,
+    );
+
+    return backgroundColor;
+  });
+
   return (
-    <Stack spacing={6}>
-      <Card overflow="hidden" variant="elevated" bg={`${color}.500`}>
+    <Stack key={id} spacing={6}>
+      <Card
+        overflow="hidden"
+        variant="elevated"
+        bg={`${backgroundColors[0].color}.500`}
+      >
         <CardHeader>
           <Flex flexDirection="row" justify="space-between">
-            <Text fontSize="2xl"> {name}</Text>
             <Text fontWeight="bold" fontSize="2xl">
+              {' '}
+              {name}
+            </Text>
+            <Text fontWeight="thin" fontSize="2xl">
               #{id}
             </Text>
           </Flex>
@@ -38,30 +54,33 @@ export default function CardPokemon({
           <CardBody>
             <Flex mx="auto" justify="space-between" alignItems="center">
               <Flex flexDir="column">
-                <Card
-                  mb="10px"
-                  variant="outline"
-                  bg={`${color}.600`}
-                  borderRadius="full"
-                  flexDir="row"
-                  px="10px"
-                  py="2px"
-                >
-                  <Image
-                    src={
-                      'https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/fire.svg'
-                    }
-                    height="15x"
-                    width="15px"
-                  ></Image>
-                  <Tooltip
-                    label="Pokémons do tipo fogo possuem habilidades como sopro de
-                      fogo, manipulação do calor e combustão."
-                    placement="top-start"
+                {types.map((type, index) => (
+                  <Card
+                    mb="10px"
+                    key={type.slot}
+                    variant="elevated"
+                    bg={`${backgroundColors[index].color}.600`}
+                    borderRadius="full"
+                    flexDir="row"
+                    px="10px"
+                    py="2px"
                   >
-                    <Text mx="7px">Fire</Text>
-                  </Tooltip>
-                </Card>
+                    <Image
+                      src={`https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${type.type.name}.svg`}
+                      height="15x"
+                      width="15px"
+                    ></Image>
+                    <Tooltip
+                      label="Pokémons do tipo fogo possuem habilidades como sopro de
+                         fogo, manipulação do calor e combustão."
+                      placement="top-start"
+                    >
+                      <Text fontSize="small" mx="7px">
+                        {type.type.name}
+                      </Text>
+                    </Tooltip>
+                  </Card>
+                ))}
               </Flex>
               <Image
                 src={imageSrc}

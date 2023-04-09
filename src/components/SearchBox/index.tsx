@@ -12,7 +12,7 @@ export function SearchBox(): JSX.Element {
       py="4"
       px="8"
       ml="6"
-      width={600}
+      width={{ base: '250px', md: '500px' }}
       alignSelf="center"
       color="gray.200"
       position="relative"
@@ -24,7 +24,7 @@ export function SearchBox(): JSX.Element {
         variant="unstyled"
         px="4"
         mr="2"
-        placeholder="Buscar na plataforma"
+        placeholder="Buscar Pokemon"
         _placeholder={{ color: 'gray.400' }}
         ref={searchInputRef}
       />
