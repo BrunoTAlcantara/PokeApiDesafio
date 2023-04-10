@@ -3,7 +3,6 @@ import axios, { AxiosResponse } from 'axios';
 import { useToast } from '@chakra-ui/react';
 import { pokemonContext } from './pokemonContext';
 import { Pokemons } from '../types/Pokemons';
-import LoadingPage from '../components/loading';
 import useSWR from 'swr';
 
 export const apiPokemon = axios.create({
@@ -42,6 +41,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     `pokemon?limit=20&offset=${offset}`,
     async (url: string) => {
       const result: AxiosResponse<PokeApiRequest> = await apiPokemon.get(url);
+      setcountPokemons(result.data.count);
       return result.data;
     },
   );
@@ -91,13 +91,6 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     }
   };
 
-  const getPokemonByID = async (id: string) => {
-    const baseURL = 'https://pokeapi.co/api/v2/';
-
-    const res = await fetch(`${baseURL}pokemon/${id}`);
-    const data = await res.json();
-    return data;
-  };
   const nextPage = () => {
     setOffset(offset + 20);
   };
@@ -126,26 +119,22 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
         colorScheme: 'blue',
       });
     }
-  }, [pokemonLoaded]);
+  }, [pokemonLoaded, offset, toast]);
 
   return (
     <>
-      {isLoading ? (
-        <LoadingPage />
-      ) : (
-        <pokemonContext.Provider
-          value={{
-            pokemons,
-            countPokemons,
-            allPokemons,
-            prevPage,
-            nextPage,
-            offset,
-          }}
-        >
-          {children}
-        </pokemonContext.Provider>
-      )}
+      <pokemonContext.Provider
+        value={{
+          pokemons,
+          countPokemons,
+          allPokemons,
+          prevPage,
+          nextPage,
+          offset,
+        }}
+      >
+        {children}
+      </pokemonContext.Provider>
     </>
   );
 };

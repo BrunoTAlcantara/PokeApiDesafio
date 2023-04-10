@@ -8,7 +8,7 @@ export function SideBarNav(): JSX.Element {
       direction={{ base: 'column', md: 'row' }}
       spacing="2"
       align="flex-start"
-      color={useColorModeValue('blue.500', 'red.500')}
+      color={useColorModeValue('blue.500', 'white')}
     >
       <NavLink
         _hover={{
