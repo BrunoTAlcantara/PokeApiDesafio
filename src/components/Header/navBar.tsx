@@ -33,7 +33,7 @@ export function SideBarNav(): JSX.Element {
         _hover={{
           color: 'yellow.500',
         }}
-        href="/pokemons/create"
+        href="/create"
       >
         Novo Pokemon
       </NavLink>
