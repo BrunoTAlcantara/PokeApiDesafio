@@ -5,7 +5,6 @@ import {
   Flex,
   Text,
   CardHeader,
-  Tooltip,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { pokemonTypes } from '../../types/pokemonsTypes';
@@ -37,6 +36,7 @@ export default function CardPokemon({
       <Card
         color="white"
         overflow="hidden"
+        minW="280px"
         variant="elevated"
         bg={`${backgroundColors[0].color}.500`}
       >
@@ -71,24 +71,19 @@ export default function CardPokemon({
                       height="15x"
                       width="15px"
                     ></Image>
-                    <Tooltip
-                      label="Pokémons do tipo fogo possuem habilidades como sopro de
-                         fogo, manipulação do calor e combustão."
-                      placement="top-start"
-                    >
-                      <Text fontSize="small" mx="7px">
-                        {type.type.name}
-                      </Text>
-                    </Tooltip>
+
+                    <Text fontSize="small" mx="7px">
+                      {type.type.name}
+                    </Text>
                   </Card>
                 ))}
               </Flex>
               <Image
                 src={imageSrc}
                 alt="ditto"
-                quality="100"
-                height="150"
-                width="150"
+                quality="10"
+                height="150px"
+                width="150px"
               />
             </Flex>
           </CardBody>

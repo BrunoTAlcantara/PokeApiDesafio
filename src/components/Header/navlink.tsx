@@ -1,7 +1,5 @@
 import { Link as ChakraLink, Text, LinkProps } from '@chakra-ui/react';
 
-import { ActiveLink } from '../ActiveLink';
-
 interface INavLinkProps extends LinkProps {
   children: string;
   href: string;
