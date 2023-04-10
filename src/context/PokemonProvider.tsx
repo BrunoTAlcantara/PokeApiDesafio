@@ -3,7 +3,6 @@ import axios, { AxiosResponse } from 'axios';
 import { useToast } from '@chakra-ui/react';
 import { pokemonContext } from './pokemonContext';
 import { Pokemons } from '../types/Pokemons';
-import LoadingPage from '../components/loading';
 import useSWR from 'swr';
 
 export const apiPokemon = axios.create({
@@ -120,26 +119,22 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
         colorScheme: 'blue',
       });
     }
-  }, [pokemonLoaded, offset]);
+  }, [pokemonLoaded, offset, toast]);
 
   return (
     <>
-      {isLoading ? (
-        <LoadingPage />
-      ) : (
-        <pokemonContext.Provider
-          value={{
-            pokemons,
-            countPokemons,
-            allPokemons,
-            prevPage,
-            nextPage,
-            offset,
-          }}
-        >
-          {children}
-        </pokemonContext.Provider>
-      )}
+      <pokemonContext.Provider
+        value={{
+          pokemons,
+          countPokemons,
+          allPokemons,
+          prevPage,
+          nextPage,
+          offset,
+        }}
+      >
+        {children}
+      </pokemonContext.Provider>
     </>
   );
 };
