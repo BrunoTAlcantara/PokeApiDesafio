@@ -59,7 +59,7 @@ export default function Index(): JSX.Element {
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       const filteredPokemons = allPokemons
-        .filter((pokemon) => pokemon.name.includes(queryText))
+        .filter((pokemon) => pokemon.name.includes(queryText.toLowerCase()))
         .slice(0, 20);
 
       setDataPokemons(filteredPokemons);
@@ -71,7 +71,7 @@ export default function Index(): JSX.Element {
     setQueryText(e.target.value);
     if (queryText.length >= 2) {
       const filteredPokemons = allPokemons
-        .filter((pokemon) => pokemon.name.includes(queryText))
+        .filter((pokemon) => pokemon.name.includes(queryText.toLowerCase()))
         .slice(0, 3);
 
       setSearchResults(filteredPokemons);
