@@ -51,7 +51,7 @@ export default function Index(): JSX.Element {
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsFetching(false);
-    }, 3000); // atraso de 2 segundo
+    }, 3000); // atraso de 3 segundos
 
     return () => clearTimeout(delay);
   }, []);
