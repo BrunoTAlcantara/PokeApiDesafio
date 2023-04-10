@@ -57,7 +57,7 @@ export const pokemonTypes = {
     name: 'Ground',
     summary:
       'Pokémon de tipo Terra são fortes contra tipos Elétrico, Fogo, Envenenado, Rocha e Aço, mas fracos contra tipos Água, Grama e Gelo.',
-    color: 'brown',
+    color: 'orange',
   },
   flying: {
     name: 'Flying',
@@ -81,7 +81,7 @@ export const pokemonTypes = {
     name: 'Rock',
     summary:
       'Pokémon de tipo Rocha são fortes contra tipos Fogo, Gelo, Inseto e Voador, mas fracos contra tipos Água, Grama, Lutador, Terra e Aço.',
-    color: 'brown',
+    color: 'gray',
   },
   ghost: {
     name: 'Ghost',
