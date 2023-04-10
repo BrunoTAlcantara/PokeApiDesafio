@@ -36,7 +36,7 @@ export default function CardPokemon({
       <Card
         color="white"
         overflow="hidden"
-        minW="280px"
+        minW="250px"
         variant="elevated"
         bg={`${backgroundColors[0].color}.500`}
       >

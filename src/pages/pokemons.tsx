@@ -1,6 +1,13 @@
-import { Button, HStack, SimpleGrid, Skeleton } from '@chakra-ui/react';
+import {
+  Button,
+  HStack,
+  SimpleGrid,
+  Skeleton,
+  useToast,
+} from '@chakra-ui/react';
 
 import Layout from '../layout';
+
 import CardPokemon from '../components/CardPokemon';
 import { SearchBox } from '../components/SearchBox';
 import {
@@ -17,6 +24,8 @@ export default function Index(): JSX.Element {
   const [queryText, setQueryText] = useState('');
   const [searchResults, setSearchResults] = useState<Pokemons[]>([]);
 
+  const toast = useToast();
+
   const {
     allPokemons,
     pokemons,
@@ -28,16 +37,21 @@ export default function Index(): JSX.Element {
 
   const [dataPokemons, setDataPokemons] = useState<Pokemons[]>([]);
   const [isFetching, setIsFetching] = useState(true); // variável isFetching
-  console.log(isFetching);
 
   useEffect(() => {
     setDataPokemons(pokemons);
+    toast({
+      title: `Pokemons capturados com sucesso!`,
+      status: 'success',
+      isClosable: true,
+      colorScheme: 'blue',
+    });
   }, [pokemons]);
 
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsFetching(false);
-    }, 3000); // atraso de 2 segundo
+    }, 3000); // atraso de 3 segundos
 
     return () => clearTimeout(delay);
   }, []);
@@ -49,6 +63,7 @@ export default function Index(): JSX.Element {
         .slice(0, 20);
 
       setDataPokemons(filteredPokemons);
+      setQueryText('');
     }
   };
 
