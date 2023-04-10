@@ -18,7 +18,6 @@ import { pokemonContext } from '../context/pokemonContext';
 export default function Home() {
   const { countPokemons } = useContext(pokemonContext);
 
-  console.log(countPokemons);
   const router = useRouter();
   return (
     <Layout>

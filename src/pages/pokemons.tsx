@@ -13,7 +13,7 @@ import {
 import { pokemonContext } from '../context/pokemonContext';
 import { Pokemons } from '../types/Pokemons';
 
-export default function Dashboard(): JSX.Element {
+export default function Index(): JSX.Element {
   const [queryText, setQueryText] = useState('');
   const [searchResults, setSearchResults] = useState<Pokemons[]>([]);
 
