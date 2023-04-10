@@ -47,7 +47,7 @@ export const SearchBox = ({
         bg: 'transparent',
         shadow: 'lg',
         maxW: '600px',
-        width: '60%',
+        width: '80%',
         mt: '1rem',
         mx: 'auto',
       }}

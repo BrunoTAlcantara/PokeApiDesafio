@@ -1,8 +1,8 @@
 import { useState, useEffect, ReactNode } from 'react';
 import axios, { AxiosResponse } from 'axios';
-import { useToast } from '@chakra-ui/react';
 import { pokemonContext } from './pokemonContext';
 import { Pokemons } from '../types/Pokemons';
+import { useToast } from '@chakra-ui/react';
 import useSWR from 'swr';
 
 export const apiPokemon = axios.create({
@@ -32,21 +32,31 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [allPokemons, setallPokemons] = useState<Pokemons[]>([]);
-  const [pokemonLoaded, setPokemonLoaded] = useState(false);
   const [countPokemons, setcountPokemons] = useState(0);
 
   const toast = useToast();
 
-  const { data: pokeApiRequest, error, isLoading } = useSWR(
+  const { data: pokeApiRequest } = useSWR(
     `pokemon?limit=20&offset=${offset}`,
     async (url: string) => {
       const result: AxiosResponse<PokeApiRequest> = await apiPokemon.get(url);
       setcountPokemons(result.data.count);
       return result.data;
     },
+    {
+      onError: (error: Error) => {
+        toast({
+          title: 'Erro ao carregar os dados',
+          description: error.message,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      },
+    },
   );
 
-  const { data: pokemonData, error: pokemonError } = useSWR(
+  const { data: pokemonData } = useSWR(
     () => {
       const urls = pokeApiRequest?.results.map(
         (pokemon: Pokemon) => pokemon.url,
@@ -66,6 +76,15 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
       shouldRetryOnError: false,
+      onError: (error: Error) => {
+        toast({
+          title: 'Erro ao carregar os dados',
+          description: error.message,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      },
     },
   );
 
@@ -102,24 +121,12 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   useEffect(() => {
     if (pokemonData) {
       setPokemons(pokemonData);
-      setPokemonLoaded(true);
     }
   }, [pokemonData]);
 
   useEffect(() => {
     getAllPokemons();
   }, []);
-
-  useEffect(() => {
-    if (pokemonLoaded) {
-      toast({
-        title: `Pokemons capturados com sucesso!`,
-        status: 'success',
-        isClosable: true,
-        colorScheme: 'blue',
-      });
-    }
-  }, [pokemonLoaded, offset, toast]);
 
   return (
     <>
