@@ -32,7 +32,6 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [offset, setOffset] = useState<number>(0);
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [allPokemons, setallPokemons] = useState<Pokemons[]>([]);
-
   const [countPokemons, setcountPokemons] = useState(0);
 
   const toast = useToast();
