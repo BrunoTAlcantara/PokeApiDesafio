@@ -1,5 +1,4 @@
-import { useBreakpointValue } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Text, useBreakpointValue } from '@chakra-ui/react';
 
 export function Logo(): JSX.Element {
   const isWideVersion = useBreakpointValue({
@@ -10,9 +9,19 @@ export function Logo(): JSX.Element {
   return (
     <>
       {!isWideVersion ? (
-        <Image src="/pokemonLogo.png" alt="Logo" width={140} height={40} />
+        <Text fontSize="3xl" fontWeight="extrabold" color="blue.500">
+          Poke
+          <Text as="span" ml="1" color="red.500">
+            Finder
+          </Text>
+        </Text>
       ) : (
-        <Image src="/pokemonLogo.png" alt="Logo" width={190} height={55} />
+        <Text fontSize="3xl" color="blue.500" fontWeight="extrabold">
+          Poke
+          <Text as="span" ml="1" color="red.500">
+            Finder
+          </Text>
+        </Text>
       )}
     </>
   );

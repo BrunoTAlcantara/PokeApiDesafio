@@ -1,4 +1,4 @@
-import { Flex, useBreakpointValue, Text, Spacer } from '@chakra-ui/react';
+import { Flex, useBreakpointValue, Spacer } from '@chakra-ui/react';
 
 import { Logo } from './logo';
 

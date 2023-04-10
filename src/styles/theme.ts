@@ -18,6 +18,12 @@ export const theme = extendTheme({
       '100': '#D1D2DC',
       '50': '#EEEEF2',
     },
+    blue: {
+      '500': '#155EAD',
+    },
+    yellow: {
+      '500': '#FFCB05',
+    },
   },
   fonts: {
     heading: 'Poppins',
