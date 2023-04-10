@@ -4,7 +4,13 @@ import LoadingAnimate from '../../public/loading.json';
 
 const LoadingPage = () => {
   return (
-    <Flex align="center" flexDir="column" justify="center" height="100vh">
+    <Flex
+      align="center"
+      flexDir="column"
+      justify="center"
+      bg="red.500"
+      height="100vh"
+    >
       <Box height={'500px'} w="500px">
         <Lottie animationData={LoadingAnimate} autoplay loop />
       </Box>

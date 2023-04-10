@@ -1,4 +1,4 @@
-import { Button, Flex, SimpleGrid, Skeleton } from '@chakra-ui/react';
+import { Button, HStack, SimpleGrid, Skeleton } from '@chakra-ui/react';
 
 import Layout from '../layout';
 import CardPokemon from '../components/CardPokemon';
@@ -28,6 +28,7 @@ export default function Index(): JSX.Element {
 
   const [dataPokemons, setDataPokemons] = useState<Pokemons[]>([]);
   const [isFetching, setIsFetching] = useState(true); // variável isFetching
+  console.log(isFetching);
 
   useEffect(() => {
     setDataPokemons(pokemons);
@@ -36,7 +37,7 @@ export default function Index(): JSX.Element {
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsFetching(false);
-    }, 2000); // atraso de 2 segundo
+    }, 3000); // atraso de 2 segundo
 
     return () => clearTimeout(delay);
   }, []);
@@ -81,10 +82,10 @@ export default function Index(): JSX.Element {
         >
           {isFetching ? ( // exibe o Loading Skeleton enquanto isFetching é true
             <>
-              <Skeleton height="250px" />
-              <Skeleton height="250px" />
-              <Skeleton height="250px" />
-              <Skeleton height="250px" />
+              <Skeleton h="300px" w="290px" />
+              <Skeleton h="300px" w="290px" />
+              <Skeleton h="300px" w="290px" />
+              <Skeleton h="300px" w="290px" />
             </>
           ) : (
             dataPokemons?.map((pokemon) => (
@@ -102,14 +103,14 @@ export default function Index(): JSX.Element {
           )}
         </SimpleGrid>
 
-        <Flex>
+        <HStack mb="50" spacing="40px" justifyContent="center">
           <Button onClick={prevPage} disabled={offset === 0}>
             Página anterior
           </Button>
           <Button onClick={nextPage} disabled={offset + 20 >= countPokemons}>
             Próxima página
           </Button>
-        </Flex>
+        </HStack>
       </Layout>
     </>
   );
